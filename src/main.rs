@@ -129,7 +129,7 @@ async fn main() -> std::io::Result<()> {
     let pool = Arc::new(pool);
     let data = AppState { schema, pool };
 
-    let my_url = env::var("MY_URL").unwrap_or_else(|_| String::from("http://localhost:8088"));
+    let my_url = env::var("MY_URL").unwrap_or_else(|_| String::from("127.0.0.1:8088"));
 
     println!("Started http server: {}", my_url);
 

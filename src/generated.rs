@@ -1,7 +1,7 @@
 use wundergraph::query_builder::types::{HasMany, HasOne};
 use wundergraph::scalar::WundergraphScalarValue;
 use wundergraph::WundergraphEntity;
-use serde_json::Value as JsonValue;
+// use serde_json::Value as JsonValue;
 
 table! {
     cinemas (id) {
@@ -102,7 +102,7 @@ table! {
     vector_data (id) {
         id -> Int4,
         time -> Timestamp,
-        properties -> Nullable<Jsonb>,
+        // properties -> Nullable<Jsonb>,
         vector_movie_id -> Int4,
     }
 }
@@ -118,7 +118,7 @@ table! {
     vector_styles (id) {
         id -> Int4,
         name -> Text,
-        style -> Jsonb,
+        // style -> Jsonb,
     }
 }
 
@@ -271,7 +271,7 @@ pub struct TagsValue {
 pub struct VectorData {
     id: i32,
     time: chrono::naive::NaiveDateTime,
-    properties: Option<JsonValue>,
+    // properties: Option<JsonValue>,
     vector_movie_id: HasOne<i32, VectorMovie>,
 }
 
@@ -291,7 +291,7 @@ pub struct VectorMovie {
 pub struct VectorStyle {
     id: i32,
     name: String,
-    style: JsonValue,
+    // style: JsonValue,
     vector_movies: HasMany<VectorMovie, vector_movies::default_style>,
     vector_styles_vector_movies: HasMany<VectorStylesVectorMovie, vector_styles_vector_movies::vector_style_id>,
 }
@@ -543,7 +543,7 @@ pub struct TagsValueChangeset {
 #[table_name = "vector_data"]
 pub struct NewVectorData {
     time: chrono::naive::NaiveDateTime,
-    properties: Option<JsonValue>,
+    // properties: Option<JsonValue>,
     vector_movie_id: i32,
 }
 
@@ -554,7 +554,7 @@ pub struct NewVectorData {
 pub struct VectorDataChangeset {
     id: i32,
     time: chrono::naive::NaiveDateTime,
-    properties: Option<JsonValue>,
+    // properties: Option<JsonValue>,
     vector_movie_id: i32,
 }
 
@@ -579,7 +579,7 @@ pub struct VectorMovieChangeset {
 #[table_name = "vector_styles"]
 pub struct NewVectorStyle {
     name: String,
-    style: JsonValue,
+    // style: JsonValue,
 }
 
 #[derive(AsChangeset, Identifiable, juniper::GraphQLInputObject, Clone, Debug)]
@@ -589,7 +589,7 @@ pub struct NewVectorStyle {
 pub struct VectorStyleChangeset {
     id: i32,
     name: String,
-    style: JsonValue,
+    // style: JsonValue,
 }
 
 #[derive(Insertable, juniper::GraphQLInputObject, Clone, Debug)]
